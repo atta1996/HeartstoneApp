@@ -1,5 +1,7 @@
 {
   "name": "HeartstoneApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

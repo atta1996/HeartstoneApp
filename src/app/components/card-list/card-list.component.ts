@@ -7,10 +7,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CardListComponent implements OnInit {
 
+  @Input() navigateTo: any;
   @Input() items: [];
   @Input() listName: String;
   constructor() { }
 
   ngOnInit() {}
 
+  generateURL(group: string, deck: string){
+    return "/card-decks/card-listing/" + group + "/" + deck;
+  }
 }

@@ -1,0 +1,50 @@
+<form [formGroup]="formulario" (submit)="login()">
+  <div>
+    <ion-label position="floating">
+      <ion-icon name="mail" item-start></ion-icon>
+      Email:
+    </ion-label>
+  </div>
+  <div>
+    <ion-input color="secondary" type="email" formControlName="email" required id="email"></ion-input>
+  </div>
+  <div *ngIf="formulario.controls.email.invalid && (formulario.controls.email.dirty || formulario.controls.email.touched)" class="alert alert-danger">
+    <p *ngIf=formulario.controls.email.errors.required>
+      El campo Email es obligatorio
+    </p>
+    <p *ngIf=formulario.controls.email.errors.email>
+      El campo Email debe ser un email válido
+    </p>
+  </div>
+  <div>
+    <ion-label position="floating">
+      <ion-icon name="lock-closed" item-start></ion-icon>
+      Password:
+    </ion-label>
+  </div>
+  <div>
+    <ion-input color="secondary" type="password" formControlName="pass" required id="pass"></ion-input>
+  </div>
+  <div *ngIf="formulario.controls.pass.invalid && (formulario.controls.pass.dirty || formulario.controls.pass.touched)" class="alert alert-danger">
+    <p *ngIf=formulario.controls.pass.errors.required>
+      El campo Password es obligatorio
+    </p>
+    <p *ngIf=formulario.controls.pass.errors.minlength>
+      El campo Password debe ser de al menos 6 caracteres
+    </p>
+  </div>
+  <div>
+    <ion-button icon-left size="medium" shape="round" color="dark"
+    (click)="login()" [disabled]=!formulario.valid tappable>
+    <ion-icon name="log-in"></ion-icon>
+    Log in
+  </ion-button>
+  </div>
+</form>
+
+<div *ngIf="userForm == true">
+  <div>Email:</div>
+  <div>{{formulario.value.email}}</div>
+  <div>Password:</div>
+  <div>{{formulario.value.pass}}</div>
+</div>
